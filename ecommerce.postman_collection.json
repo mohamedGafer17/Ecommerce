@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "1cf92a78-2eae-47ed-9bdc-1ebcef5f4f80",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27988720"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Mohamed\",\r\n    \"email\" : \"medogafar812@gmail.com\",\r\n    \"password\" : \"12345\",\r\n    \"confirmPassword\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activate account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/confirmEmail/:activationCode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"confirmEmail",
+								":activationCode"
+							],
+							"variable": [
+								{
+									"key": "activationCode",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send forget code",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"email\" : \"medogafar812@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/forgetCode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"forgetCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"medogafar812@gmail.com\",\r\n    \"forgetCode\" : \"48170\",\r\n    \"password\" : \"1234\",\r\n    \"confirmPassword\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"medogafar812@gmail.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "Hamada__eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDBiYzdlMWE4ZmJhYTM2MmUzMzlmMCIsImVtYWlsIjoibWVkb2dhZmFyODEyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTgwMzExMiwiZXhwIjoxNzE1OTc1OTEyfQ.S5eKGrV9aIOW60D8hF-i2HLAIDIxZ0f53-xSiXre0rA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category",
+									"type": "file",
+									"src": "/C:/Users/forsan/Downloads/gallery-01 (1).png"
+								},
+								{
+									"key": "name",
+									"value": "electronics",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "Hamada__eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDBiYzdlMWE4ZmJhYTM2MmUzMzlmMCIsImVtYWlsIjoibWVkb2dhZmFyODEyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTgwMzExMiwiZXhwIjoxNzE1OTc1OTEyfQ.S5eKGrV9aIOW60D8hF-i2HLAIDIxZ0f53-xSiXre0rA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "clothes",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"type": "file",
+									"src": "/C:/Users/forsan/Downloads/1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/66451d683fc243b57da14241",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"66451d683fc243b57da14241"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "Hamada__eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDBiYzdlMWE4ZmJhYTM2MmUzMzlmMCIsImVtYWlsIjoibWVkb2dhZmFyODEyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTgwMzExMiwiZXhwIjoxNzE1OTc1OTEyfQ.S5eKGrV9aIOW60D8hF-i2HLAIDIxZ0f53-xSiXre0rA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/category/66451d683fc243b57da14241",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"66451d683fc243b57da14241"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
