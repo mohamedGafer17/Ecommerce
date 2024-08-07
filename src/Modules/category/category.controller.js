@@ -83,5 +83,5 @@ export const allCategories = asyncHandler(async(req, res, next) =>{
         populate: [{ path: "createdBy"}]
     });
     
-    return res.json({ success: true, results: categories})
+    return res.json({ success: true, results: categories, test: "vercel"})
 })
