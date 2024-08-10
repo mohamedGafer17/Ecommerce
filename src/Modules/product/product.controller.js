@@ -4,7 +4,8 @@ import { nanoid} from 'nanoid'
 import { Product }  from "./../../../DB/models/product.model.js"
 import slugify from "slugify";
 import { Category } from "./../../../DB/models/category.model.js"
-import { Subcategory } from "./../../../DB/models/subcategory.model.js"
+// import { Subcategory } from "./../../../DB/models/subcategory.model.js"
+import { Subcategory} from "./../../../DB/models/subcategory.model.js"
 import { Brand } from "./../../../DB/models/brand.model.js"
 
 
