@@ -7,35 +7,43 @@ import couponRouter from './Modules/coupon/coupon.router.js'
 import cartRouter from './Modules/cart/cart.router.js'
 import orderRouter from './Modules/order/order.router.js'
 import morgan from 'morgan'
+import cors from "cors"
 export const appRouter = (app, express)=>{
 
-    // morgan
-    if (process.env.NODE_ENV === "dev" ){
-    app.use(morgan("common"))
-    }
+    // // morgan
+    // if (process.env.NODE_ENV === "dev" ){
+    // app.use(morgan("common"))
+    // }
 
-    // CORS
-    const whitelist = ["http://127.0.0.1:5500"]
+    // // CORS
+    // const whitelist = ["http://127.0.0.1:5500"]
 
-    app.use((req, res, next) =>{
-        console.log(req.header("origin"));
-        // activate account api
-        if (req.originalUrl.includes("/auth/confirmEmail")) {
-            res.setHeader("Access-Control-Allow-Origin", "*")
-            res.setHeader("Access-Control-Allow-Methods", "GET")
-            return next();
-        }
-        if (!whitelist.includes(req.header("origin"))) {
-            return next(new Error("Blocked By Cors"))
-        }
-        res.setHeader("Access-Control-Allow-Origin", "*")
-        res.setHeader("Access-Control-Allow-Headers", "*")
-        res.setHeader("Access-Control-Allow-Methods", "*")
-        res.setHeader("Access-Control-Allow-Private-Network", true)
-        return next()
-    })
+    // app.use((req, res, next) =>{
+    //     console.log(req.header("origin"));
+    //     // activate account api
+    //     if (req.originalUrl.includes("/auth/confirmEmail")) {
+    //         res.setHeader("Access-Control-Allow-Origin", "*")
+    //         res.setHeader("Access-Control-Allow-Methods", "GET")
+    //         return next();
+    //     }
+    //     if (!whitelist.includes(req.header("origin"))) {
+    //         return next(new Error("Blocked By Cors"))
+    //     }
+    //     res.setHeader("Access-Control-Allow-Origin", "*")
+    //     res.setHeader("Access-Control-Allow-Headers", "*")
+    //     res.setHeader("Access-Control-Allow-Methods", "*")
+    //     res.setHeader("Access-Control-Allow-Private-Network", true)
+    //     return next()
+    // })
+
+    app.use(cors())
     // global middleware
-    app.use(express.json())
+    app.use((req,res,next ) =>{
+        if (req.originalurl === "/order/webhook") {
+            return next()
+        }
+        express.json()(req, res, next)
+    })
     // routes
     //auth
     app.use("/auth", authRouter)
